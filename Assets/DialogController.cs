@@ -36,8 +36,8 @@ public class DialogController : MonoBehaviour {
 							" prison cell. It is <i>grim</i>. Around you are just a" + 
 							" few minor things: Some dirty sheets, a cracked" +
 							" mirror and a solid steel, locked prison door.\n\n" +
-							"Tap <b>M</b> to look at the mirror, tap <b>D</b> to try the door or " +
-							"tap <b>S</b> to oogle the sheets.";
+							"Tap <b>[ M ]</b> to look at the mirror\n\nTap <b>[ D ]</b> to look at the door \n\n" +
+							"Tap <b>[ S ]</b> to look at the sheets";
 		if 		(Input.GetKeyDown (KeyCode.S))	{ myState = States.sheets; } 
 		else if (Input.GetKeyDown (KeyCode.M))	{ myState = States.mirror; } 
 		else if (Input.GetKeyDown (KeyCode.D))	{ myState = States.door; }
@@ -49,7 +49,7 @@ public class DialogController : MonoBehaviour {
 							"The sheets are covered in blood, but unbeknowst to you and due to your recent " +
 							"unconcious state, you don't know if it's yours or perhaps a previous unlucky captive.\n\n" +
 							"You snap out of that gruesome thought as you quickly notice an outline of an object under the sheet.\n\n" +
-							"Tap <b>F</b> to flick the sheet over or tap <b>C</b> to continue to explore your cell.";
+							"Tap <b>[ F ]</b> to flick the sheets over \n\nTap <b>[ C ]</b> to continue to explore your cell";
 		if 		(Input.GetKeyDown (KeyCode.C))	{ myState = States.cell; } 
 		else if (Input.GetKeyDown (KeyCode.F))	{ myState = States.sheets_key; }
 	}
@@ -60,13 +60,13 @@ public class DialogController : MonoBehaviour {
 							"what you've ultimately become; rather unsightly. And, <i>much</i> like the " +
 							"perfect metaphor this mirror lays out before you, this has primarily been down " +
 							"to your long, unhealthy relationship with crack.\n\n" +
-							"Tap <b>C</b> to continue to explore your cell.";
+							"Tap <b>[ C ]</b> to continue to explore your cell";
 		if 		(Input.GetKeyDown (KeyCode.C))	{ myState = States.cell; }
 	}
 
 	// Users first look at the door
 	void state_door () {
-		DialogBox.text = 	"It's a door. It's locked.\n\n" + "Tap <b>C</b> to continue exploring your cell.";
+		DialogBox.text = 	"It's a door. It's locked.\n\n" + "Tap <b>[ C ]</b> to continue exploring your cell";
 		if 		(Input.GetKeyDown (KeyCode.C))	{ myState = States.cell; }
 	}
 
@@ -76,43 +76,43 @@ public class DialogController : MonoBehaviour {
 							"readily apparant; a rusty, unique looking key. You ponder on the thought of a prison guard " +
 							"potentially being this useless.\n\n" + 
 							"\"Surely this is a trap?\" you unashamedly and openly ask yourself.\n\n" +
-							"Tap <b>T</b> to take the key.";
+							"Tap <b>[ T ]</b> to take the key";
 		if 		(Input.GetKeyDown (KeyCode.T))	{ myState = States.cell_key; }
 	}
 
 	// New state for the cell where the key is now essentially in the user's invisible inventory
 	void state_cell_key () {
-		DialogBox.text = 	"You step back and consider your options. What now?\n\n" + "Tap <b>M</b> to look at the mirror, " +
-							"tap <b>D</b> to try the door or tap <b>S</b> to oogle the sheets.";
+		DialogBox.text = 	"You step back and consider your options. What now?\n\n" + "Tap <b>[ M ]</b> to look at the mirror \n\n" +
+							"Tap <b>[ D ]</b> to try the door \n\nTap <b>[ S ]</b> to oogle the sheets";
 		if 		(Input.GetKeyDown (KeyCode.M))	{ myState = States.mirror_lock; } 
 		else if (Input.GetKeyDown (KeyCode.S))	{ myState = States.sheets_lock; } 
 		else if (Input.GetKeyDown (KeyCode.D))	{ myState = States.door_lock; }
 	}
 	
 	void state_mirror_lock () {
-		DialogBox.text = 	"Mirror again.\n\n" + "Tap <b>C</b> to continue exploring your cell.";
+		DialogBox.text = 	"Mirror again.\n\n" + "Tap <b>[ C ]</b> to continue exploring your cell";
 		if 		(Input.GetKeyDown (KeyCode.C))	{ myState = States.cell_key; }
 	}
 	
 	void state_sheets_lock () {
-		DialogBox.text = 	"Sheets again.\n\n" + "Tap <b>C</b> to continue exploring your cell.";
+		DialogBox.text = 	"Sheets again.\n\n" + "Tap <b>[ C ]</b> to continue exploring your cell";
 		if 		(Input.GetKeyDown (KeyCode.C))	{ myState = States.cell_key; }
 	}
 
 	void state_door_lock () {
-		DialogBox.text = 	"Door lock time.\n\n" + "Tap <b>K</b> to try the key on the door or tap " +
-							"<b>C</b> to continue exploring your cell.";
+		DialogBox.text = 	"Door lock time.\n\n" + "Tap <b>[ K ]</b> to try the key on the door \n\nTap " +
+							"<b>[ C ]</b> to continue exploring your cell";
 		if 		(Input.GetKeyDown (KeyCode.C))	{ myState = States.cell_key; } 
 		else if (Input.GetKeyDown (KeyCode.K))	{ myState = States.door_key; }
 	}
 	
 	void state_door_key () {
-		DialogBox.text = 	"Door unlocked.\n\n" + "Tap <b>E</b> to escape your imprisonment.";
+		DialogBox.text = 	"Door unlocked.\n\n" + "Tap <b>[ E ]</b> to escape your imprisonment";
 		if 		(Input.GetKeyDown (KeyCode.E))	{ myState = States.cell_escape; }
 	}
 	
 	void state_cell_escape () {
-		DialogBox.text = 	"You've escaped!\n\n" + "Tap <b>P</b> to play again.";
+		DialogBox.text = 	"You've escaped!\n\n" + "Tap <b>[ P ]</b> to play again";
 		if 		(Input.GetKeyDown (KeyCode.P))	{ myState = States.cell; }
 	}
 			
